@@ -23,11 +23,11 @@ matplotlib.rcParams.update(pgf_with_rc_fonts)
 ## Plotting settings
 
 # for normal plots
-plot_style = [':',  '--', '-.', '-'] # for varying aggressiveness
-# plot_style = ['-', '-']
-# plot_col = ['gold', 'darkorange', 'firebrick', 'maroon'] # SAFFRON colors
+# plot_style = [':',  '--', '-.', '-'] # for varying aggressiveness
+plot_style = ['-', '-']
+plot_col = ['gold', 'darkorange', 'firebrick', 'maroon'] # SAFFRON colors
 # plot_col = ['mediumslateblue', 'mediumorchid', 'darkviolet', 'indigo'] # LORD colors
-plot_col = ['firebrick', 'darkviolet', 'green'] # SAFFRON, LORD, Alpha-investing
+# plot_col = ['firebrick', 'darkviolet', 'green'] # SAFFRON, LORD, Alpha-investing
 plot_mark = [ 'x', 'o', '^', 'v', 'D', 'x', '+']
 plots_ind = 1
 

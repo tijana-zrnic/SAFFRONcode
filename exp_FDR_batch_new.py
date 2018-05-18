@@ -22,7 +22,7 @@ from settings_util import*
   
 ################ Running entire framework  ####################
 
-def run_single(NUMRUN, NUMHYP, NUMDRAWS, mu_gap, pi, alpha0, mod_choice, FDR, sigma = 1, verbose = False, TimeString = False, rndseed = 0, startfac = 0.1):
+def run_single(NUMRUN, NUMHYP, NUMDRAWS, mu_gap, pi, alpha0, markov_lag, mod_choice, FDR, sigma = 1, verbose = False, TimeString = False, rndseed = 0, startfac = 0.1):
 # model choice 1: Gaussian mixture; 2: Beta alternatives
     
     if rndseed == 0:
@@ -40,7 +40,7 @@ def run_single(NUMRUN, NUMHYP, NUMDRAWS, mu_gap, pi, alpha0, mod_choice, FDR, si
        
     #### Set file and dirnames ##########
     dir_name = './dat'
-    filename = 'MG%.1f_Si%.1f_FDR%d_NH%d_ND%d_PM%.2f_NR%d_MOD%d_%s' % (mu_gap, sigma, FDR, NUMHYP, NUMDRAWS, pi, NUMRUN, mod_choice, time_str)
+    filename = 'MG%.1f_Si%.1f_FDR%d_NH%d_ND%d_L%d_PM%.2f_NR%d_MOD%d_%s' % (mu_gap, sigma, FDR, NUMHYP, NUMDRAWS, markov_lag, pi, NUMRUN, mod_choice, time_str)
     
     # ----------- initialize result vectors and mats ------------- ##
     pval_mat = np.zeros([NUMHYP, NUMRUN])
@@ -66,13 +66,13 @@ def run_single(NUMRUN, NUMHYP, NUMDRAWS, mu_gap, pi, alpha0, mod_choice, FDR, si
             rndsd = None
 
         # Create a vector of gaps
-        gap = np.random.randn(NUMHYP)+mu_gap
-        this_exp = rowexp_new_batch(NUMHYP, NUMDRAWS, Hypo, 0, gap)
+        gap = np.ones(NUMHYP)*mu_gap
+        this_exp = rowexp_new_batch(NUMHYP, NUMDRAWS, Hypo, 0, gap, markov_lag)
 
         #%%%%%%%%% Run experiments: Get sample and p-values etc. %%%%%%%%%%%%%
         # Run random experiments with same random seed for all FDR procedures
         if mod_choice == 1:
-            this_exp.gauss_two_mix(sigma, rndsd)
+            this_exp.gauss_two_mix(sigma, markov_lag, rndsd)
         elif mod_choice == 2:
             this_exp.beta_draws(rndsd)
         pval_mat[:, l] = this_exp.pvec
@@ -83,11 +83,11 @@ def run_single(NUMRUN, NUMHYP, NUMDRAWS, mu_gap, pi, alpha0, mod_choice, FDR, si
         elif FDR == 2:
             proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.4)
         elif FDR == 3:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.6)
+            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.6, markov_lag)
         elif FDR == 4:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.8)
+            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.8, markov_lag)
         elif FDR == 5:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 2)
+            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.6, markov_lag)
         elif FDR == 6:
             proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 2.3)
         elif FDR == 7:

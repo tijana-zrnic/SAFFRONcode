@@ -162,8 +162,8 @@ def plot_results(plot_style, whichrun, FDRrange, pirange, hyprange, mu_gap, sigm
         x_label = '$\pi_1$'
 
         # Create legend
-        # legends_list = np.array(proc_list).take(FDRrange)
-        legends_list = ['L=0','L=1','L=2','L=3']
+        legends_list = np.array(proc_list).take(FDRrange)
+        # legends_list = ['L=0','L=1','L=2','L=3']
 
         ##### FDR vs pi #####
 

@@ -44,7 +44,7 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--FDRrange', type=str, default = '5') # choice of algorithms and parameters (listed in exp_FDR_batch_new)
+    parser.add_argument('--FDRrange', type=str, default = '1') # choice of algorithms and parameters (listed in exp_FDR_batch_new)
     parser.add_argument('--num-runs', type=int, default = 200) # number of independent trials
     parser.add_argument('--num-hyp', type=int, default = 1000) # number of hypotheses
     parser.add_argument('--plot-style', type = int, default = 1) # 0 for plots vs hyp, 1 for plots vs pi1

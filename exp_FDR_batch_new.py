@@ -79,32 +79,12 @@ def run_single(NUMRUN, NUMHYP, NUMDRAWS, mu_gap, pi, alpha0, markov_lag, mod_cho
 
         # Initialize FDR
         if FDR == 1:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.2)
+            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.6, markov_lag)
         elif FDR == 2:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.4)
-        elif FDR == 3:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.6, markov_lag)
-        elif FDR == 4:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.8, markov_lag)
-        elif FDR == 5:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 1.6, markov_lag)
-        elif FDR == 6:
-            proc = SAFFRON_proc_batch(alpha0, NUMHYP, 0.5, 2.3)
-        elif FDR == 7:
             proc = LORD_proc_batch(alpha0, NUMHYP, startfac, 0)
-        elif FDR == 8:
-            proc = LORD_proc_batch(alpha0, NUMHYP, startfac, -1)
-        elif FDR == 9:
-            proc = LORD_proc_batch(alpha0, NUMHYP, startfac, 1.2)
-        elif FDR == 10:
-            proc = LORD_proc_batch(alpha0, NUMHYP, startfac, 1.4)
-        elif FDR == 11:
-            proc = LORD_proc_batch(alpha0, NUMHYP, startfac, 1.8)
-        elif FDR == 12:
-            proc = LORD_proc_batch(alpha0, NUMHYP, startfac, 2)
-        elif FDR == 13:
+        elif FDR == 3:
             proc = ALPHA_proc_batch(alpha0, NUMHYP, startfac)
-        elif FDR == 14:
+        elif FDR == 4:
             proc = SAFFRON_ALPHA_INV_proc_batch(alpha0, NUMHYP, 1.4)
 
 

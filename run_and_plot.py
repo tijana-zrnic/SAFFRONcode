@@ -52,7 +52,7 @@ if __name__ == "__main__":
     parser.add_argument('--mu-gap', type=float, default = 3) # mu_c for gaussian tests
     parser.add_argument('--mod-choice', type=int, default = 1) # 1 for gaussian tests, 2 for beta alternatives (*set mu-gap=0 when not doing gaussian tests*)
     parser.add_argument('--pirange', type=str, default = '0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9') # range of pi1
-    parser.add_argument('--markov-lag', type=str, default='0,1,2,3')
+    parser.add_argument('--markov-lag', type=str, default='0')
     args = parser.parse_args()
     logging.info(args)
     main()

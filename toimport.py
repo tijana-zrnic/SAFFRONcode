@@ -2,7 +2,7 @@ import numpy as np
 import os
 
 
-proc_list = ['SAFFRON','SAFFRON','SAFFRON','SAFFRON','SAFFRON','SAFFRON','LORD','LORD','LORD','LORD','LORD','LORD', 'Alpha-investing','SAFFRON']
+proc_list = ['SAFFRON','LORD','Alpha-investing','SAFFRON AI']
 
 
 def saveres(direc, filename, mat, ext = 'dat', verbose = True):
